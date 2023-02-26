@@ -1,0 +1,357 @@
+<!Doctype HTML>
+<html lang="en">
+    <meta charset="UTF-8">
+    <head>
+        <title>Parking Pass</title>
+    </head>
+<body>
+    <div id="receipt-table">
+    <table id="gd" class="body-wrap">
+    <tbody>
+    <tr>
+    <td></td>
+    <td class="container" width="600">
+    <div class="content">
+        <table class="main" width="100%" cellpadding="0" cellspacing="0">
+    <tbody>
+    <tr>
+    <td class="content-wrap aligncenter">
+    <table width="100%" cellpadding="0" cellspacing="0">
+    <tbody>
+    <tr>
+    <td class="content-block">
+    <h2>Thanks for Parking with Us!</h2>
+    </td>
+</tr>
+    <tr>
+    <td class="content-block">
+<table class="invoice">
+    <tbody>
+    <tr>
+    <td align="center">Name: </td>
+    <td id="name"></td>
+</tr>
+<tr>
+    <td align="center">Time: </td>
+    <td id="time"></td>
+</tr>
+    <td align="center">Date: </td>
+    <td id="date"></td>
+</tr>
+    <tr>
+    <h2 align="center">Space No:</h2>
+    <br>
+        <h2 id="space"> </h2>
+</td>
+</tr>
+</tbody>
+</table>
+    <tr>
+    <td class="content-block">
+    <button class="download" onclick="downloadReceipt()">Download Pass</button>
+</td>
+    <div class="footer">
+    <table width="100%">
+    <tbody>
+    <tr>
+    <td class="content-block" align="center" >Questions? Email <a href="mailto:">almlinaza@addu.edu.ph</a></td>
+</tr>
+</tbody>
+</div>
+<style>
+  
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    width: 100% !important;
+    height: 100%;
+    line-height: 1.6;
+}
+
+table td {
+    vertical-align: top;
+}
+
+body {
+    background-color: #665c92;
+}
+tbody {
+    font-weight:bold;
+}
+.body-wrap {
+    background-color: #665c92;
+    width: 100%;
+}
+
+.container {
+    display: block !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    clear: both !important;
+}
+
+.content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+    padding: 20px;
+}
+
+.main {
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    border-radius: 3px;
+}
+
+.content-wrap {
+    padding: 20px;
+}
+
+.content-block {
+    padding: 0 0 20px;
+}
+
+.header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.footer {
+    width: 100%;
+    clear: both;
+    color: #999;
+    padding: 20px;
+}
+.footer a {
+    color: #999;
+}
+.footer p, .footer a, .footer unsubscribe, .footer td {
+    font-size: 12px;
+}
+
+h1, h2, h3 {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #000;
+    margin: 40px 0 0;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+p, ul, ol {
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+p li, ul li, ol li {
+    margin-left: 5px;
+    list-style-position: inside;
+}
+td{
+  align-items: center;
+  justify-content: center;
+}
+a {
+    color: #1ab394;
+    text-decoration: underline;
+}
+
+.btn-primary {
+    text-decoration: none;
+    color: #FFF;
+    background-color: #1ab394;
+    border: solid #1ab394;
+    border-width: 5px 10px;
+    line-height: 2;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+    text-transform: capitalize;
+}
+
+.last {
+    margin-bottom: 0;
+}
+
+.first {
+    margin-top: 0;
+}
+
+.aligncenter {
+    text-align: center;
+}
+
+.alignright {
+    text-align: right;
+}
+
+.alignleft {
+    text-align: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.alert {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    padding: 20px;
+    text-align: center;
+    border-radius: 3px 3px 0 0;
+}
+.alert a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+}
+.alert.alert-warning {
+    background: #f8ac59;
+}
+.alert.alert-bad {
+    background: #ed5565;
+}
+.alert.alert-good {
+    background: #1ab394;
+}
+
+.invoice {
+    margin: 40px auto;
+    text-align: left;
+    width: 80%;
+}
+.invoice td {
+    padding: 5px 0;
+}
+.invoice .invoice-items {
+    width: 100%;
+}
+.invoice .invoice-items td {
+    border-top: #eee 1px solid;
+}
+.invoice .invoice-items .total td {
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    font-weight: 700;
+}
+.download {
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 640px) {
+    h1, h2, h3, h4 {
+        font-weight: 600 !important;
+        margin: 20px 0 5px !important;
+    }
+
+    h1 {
+        font-size: 22px !important;
+    }
+
+    h2 {
+        font-size: 18px !important;
+    }
+
+    h3 {
+        font-size: 16px !important;
+    }
+
+    .container {
+        width: 100% !important;
+    }
+
+    .content, .content-wrap {
+        padding: 10px !important;
+    }
+
+    .invoice {
+        width: 100% !important;
+    }
+}
+</style>
+
+<script>
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Get the name and surname from the URL parameters
+    const firstName = urlParams.get('first-name');
+    const lastName = urlParams.get('last-name');
+    const timeReserved = urlParams.get('ttime');
+    const dateReserved = urlParams.get('ddate');
+    const Space = urlParams.get('space');
+
+    // Display the name, time and date in the appropriate element
+    document.getElementById('name').textContent = `${firstName} ${lastName}`;
+    document.getElementById('time').textContent = timeReserved;
+    document.getElementById('date').textContent = dateReserved;
+    document.getElementById('space').textContent = Space;
+
+ </script>
+ <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> 
+ 
+<script>
+    function downloadReceipt() {
+      // Get the table element
+      const table = document.getElementById('gd');
+    
+      // Create a new canvas element
+      const canvas = document.createElement('canvas');
+      canvas.width = table.offsetWidth;
+      canvas.height = table.offsetHeight;
+    
+      // Get the context of the canvas
+      const context = canvas.getContext('2d');
+    
+      // Draw the table onto the canvas
+      html2canvas(table, { useCORS: true, scale: 2 }).then(canvas => {
+    
+        // Create a new anchor element
+        const link = document.createElement('a');
+    
+        // Set the download attribute of the anchor element to a unique filename
+        link.download = 'parking_pass.png';
+    
+        // Set the href attribute of the anchor element to the data URL of the image
+        link.href = canvas.toDataURL('image/png');
+    
+        // Click the anchor element to trigger the download
+        link.click();
+      });
+    }
+    </script>
+</html>
+
